@@ -25,4 +25,28 @@ class StateProvider extends Component {
 
     return <div>{children}</div>
   }
+
+  addNew(text) {
+    const updatedList = addToList(this.state.list, {text, completed: false})
+    this.setState({list: updatedList})
+  }
+
+  changeFilter(filter){
+    this.setState({filter})
+  }
+
+  changeStatus(itemId, completed){
+    const updatedList = updateStatus(this.state.list, itemId, completed)
+    this.setState({list: updatedList})
+  }
+
+  changeMode(mode = MODE_NONE){
+    this.setState({mode})
+  }
+
+  setSearchQuery(text){
+    this.setState({query: text || ''})
+  }
 }
+
+export default StateProvider
